@@ -65,7 +65,9 @@ def make_thumbnail_images(m3u8):
 
     for index, d in enumerate(data):
         print(index, d)
-        os.system("{} -v fatal -i \"{}\" -ss 0 -vframes 1 {}\output{:0>4d}.png".format(ffmpeg_path, d, tmp_dir, index))
+        os.system(
+            "{} -user_agent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36\" -v fatal -i \"{}\" -ss 0 -vframes 1 {}\output{:0>4d}.png".format(
+                ffmpeg_path, d, tmp_dir, index))
 
 
 def make_thumbnail(video):
@@ -140,6 +142,7 @@ if __name__ == '__main__':
     payload = {}
     files = {}
     headers = {
-        'Cookie': args.cookie
+        'Cookie': args.cookie,
+        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
     }
     main()
